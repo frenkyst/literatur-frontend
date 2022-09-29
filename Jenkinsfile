@@ -33,7 +33,7 @@ pipeline{
                   docker compose down
                   docker rmi ${userdock}/${image}
                   docker rmi ${image}
-                  docker compose up -d
+                  docker compose -f fe-compose.yaml up -d
                   exit
                   EOF"""
               }
