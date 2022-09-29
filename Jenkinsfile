@@ -9,19 +9,14 @@ def image = 'literature-frontend'
 pipeline{
   agent any
   stages{
-	  
-	  
-	  stage('Send Success Notification') {
-            steps {
+      stage('Send Success Notification') {
+          steps {
                 sh """
                     curl -X POST 'https://api.telegram.org/bot${env.telegramapi}/sendMessage' -d \
 		                'chat_id=${env.telegramid}&text=Build ID #${env.BUILD_ID} Start Auto Deploy!'
                    """
           }
       }
-	  
-	  
-	  
      stage('Pull From Frontend Repo') {
          steps {
             sshagent([credential]) {
@@ -63,8 +58,6 @@ pipeline{
               }
           }
       }
-    
-      
       stage('Send Success Notification') {
             steps {
                 sh """
@@ -73,8 +66,5 @@ pipeline{
                    """
           }
       }
-    
-    
   }
-
 }
