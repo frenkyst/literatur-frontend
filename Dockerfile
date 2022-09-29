@@ -1,6 +1,6 @@
 FROM node:15
 WORKDIR /app
-COPY . build
+COPY . .
 RUN npm install -g serve
 EXPOSE 3000
-CMD [ "serve", "-s", "build" ]
+CMD [ "serve", "-s", "." ]
