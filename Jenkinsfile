@@ -9,7 +9,7 @@ def image = 'literature-frontend'
 pipeline{
   agent any
   stages{
-      stage('Send Success Notification') {
+      stage('Send Start Notification') {
           steps {
                 sh """
                     curl -X POST 'https://api.telegram.org/bot${env.telegramapi}/sendMessage' -d \
