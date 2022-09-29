@@ -1,0 +1,11 @@
+version : '3.8'
+services:
+
+  frontend:
+    build: .
+    image: menther/literature-frontend:latest
+    container_name : frontend
+    restart: unless-stopped
+    stdin_open : true
+    ports:
+     - 3000:3000
