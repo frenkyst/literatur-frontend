@@ -9,14 +9,6 @@ def image = 'literature-frontend'
 pipeline{
   agent any
   stages{
-      stage('Send Start Notification') {
-          steps {
-                sh """
-                    curl -X POST 'https://api.telegram.org/bot${env.telegramapi}/sendMessage' -d \
-		                'chat_id=${env.telegramid}&text=Build ID #${env.BUILD_ID} Start Auto Deploy!'
-                   """
-          }
-      }
      stage('Pull From Frontend Repo') {
          steps {
             sshagent([credential]) {
@@ -40,7 +32,7 @@ pipeline{
                   # docker container rm ${userdock}-${image}
                   docker compose down
                   docker rmi ${userdock}/${image}
-                  docker rmi ${image}
+                  # docker rmi ${image}
                   docker compose -f fe-compose.yaml up -d
                   exit
                   EOF"""
