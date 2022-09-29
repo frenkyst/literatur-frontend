@@ -47,9 +47,21 @@ pipeline{
             docker image push ${userdock}/${image}:latest
             exit
             EOF"""
+              }
           }
       }
+    
+      
+      stage('Send Success Notification') {
+            steps {
+                sh """
+                    curl -X POST 'https://api.telegram.org/bot${env.telegramapi}/sendMessage' -d \
+		                'chat_id=${env.telegramid}&text=Build ID #${env.BUILD_ID} Frontend Pipeline Successful!'
+                   """
+          }
       }
+    
+    
   }
 
 }
