@@ -1,4 +1,4 @@
-def credential = 'app-key'
+def credential = 'appserver'
 def userdock = 'menther'
 def server = 'menther@10.36.116.205'
 def directory = 'literatur-frontend'
